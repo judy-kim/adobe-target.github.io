@@ -284,7 +284,7 @@ If the correct version isn&rsquo;t specified (eg: If you use a V2 payload but do
     </tbody>
 </table>
 
-<p>For details on each API, including sample requests and responses, read on!</p>
+<p>For additional information on each API, including sample requests and responses, reference the API details below.</p>
 
 <aside class="notice">
     For JSON offer types, note that certain properties such as createdBy, createdAt, modifiedBy, and modifiedAt will not be added to the response.
@@ -292,7 +292,6 @@ If the correct version isn&rsquo;t specified (eg: If you use a V2 payload but do
 
 <p>For example, using the Create Offer API for HTML content might return a response that includes the modifiedAt property.</p>
 
-<code class="prettyprint">
 {
     "id": 438180,
     "name": "Sample HTML Offer",
@@ -300,11 +299,9 @@ If the correct version isn&rsquo;t specified (eg: If you use a V2 payload but do
     "modifiedAt": "2017-07-10T20:46:53Z",
     "workspace": "1234567"
 }
-</code>
 
 <p>However, using the Create Offer API for JSON content would return a response that does not include the modifiedAt property.</p>
 
-<code class="prettyprint">
 {
     "id": 438180,
     "name": "Sample Json Offer",
@@ -315,7 +312,6 @@ If the correct version isn&rsquo;t specified (eg: If you use a V2 payload but do
         "workspace": "1234567" <!--Judy: Does the API return the "workspace" property for JSON offer types?-->
     }
 }
-</code>
 
 <h2 id="admin-postman-collection">Admin Postman Collection</h2>
 
