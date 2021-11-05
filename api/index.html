@@ -228,9 +228,98 @@
 If the correct version isn&rsquo;t specified (eg: If you use a V2 payload but don&rsquo;t specify the Content-Type header), then the API will respond with an unsupported error if the API is not backwards compatible.
 </aside>
 
+<!-- JUDY: updating this Offer Types section.-->
+<h2 id="offer-types">Offer Types</h2>
+
+<!--JUDY: What, if anything, should be specified regarding API versions, when dealing with JSON offer types?-->
+<p>The Target Admin API supports multiple Target offer types. As shown in the following table, HTML offer types and JSON offer types may be retrieved using their respective URLs.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>API Name</th>
+            <th>Method</th>
+            <th>URL for HTML Offer Types</th>
+            <th>URL for JSON Offer Types</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>List Offers</td>
+            <td>GET</td>
+            <td>/{tenant}/target/offers/</td>
+            <td>/{tenant}/target/offers/json/</td>
+            <td>Returns the list of previously-created HTML offers or JSON offers.</td>
+        </tr>
+        <tr>
+            <td>Get Offer by ID</td>
+            <td>GET</td>
+            <td>/{tenant}/target/offers/content/{id}</td>
+            <td>/{tenant}/target/offers/json/{id}</td>
+            <td>Retrieves the contents of the HTML or JSON offer identified by {id}.</td>
+        </tr>
+        <tr>
+            <td>Create Offer</td>
+            <td>POST</td>
+            <td>/{tenant}/target/offers/content</td>
+            <td>/{tenant}/target/offers/json/</td>
+            <td>Creates a new HTML or JSON offer as defined by the request data.</td>
+        </tr>
+        <tr>
+            <td>Update Offer by ID</td>
+            <td>PUT</td>
+            <td>/{tenant}/target/offers/content/{id}</td>
+            <td>/{tenant}/target/offers/json/{id}</td>
+            <td>Updates (replaces) the HTML or JSON offer identified by {id}. Updates offer entirely (replace) by {id}</td>
+             <!-- JUDY: Not clear: Which offer is being replaced, and what is it being replaced by?? Does {id} refer to the offer being replaced (overwritten) by... something else, or does it refer to the offer that will be used to replace... something else? -->
+        </tr>
+        <tr>
+            <td>Delete Offer by ID</td>
+            <td>DELETE</td>
+            <td>/{tenant}/target/offers/content/{id}</td>
+            <td>/{tenant}/target/offers/json/{id}</td>
+            <td>Deletes the HTML or JSON offer identified by {id}. Updates offer entirely (replace) by {id}</td>
+        </tr>
+    </tbody>
+</table>
+
+For details on each API, including sample requests and responses, read on!
+
+<aside class="notice">
+    For JSON offer types, note that certain properties such as createdBy, createdAt, modifiedBy, and modifiedAt will not be added to the response.
+</aside>
+
+For example, using the Create Offer API for HTML content might return a response that includes the modifiedAt property.
+
+<code class="prettyprint">
+{
+    "id": 438180,
+    "name": "Sample HTML Offer",
+    "content": "<div>The content of the offer</div>",
+    "modifiedAt": "2017-07-10T20:46:53Z",
+    "workspace": "1234567"
+}
+</code>
+
+However, using the Create Offer API for JSON content would return a response that does not include the modifiedAt property.
+
+<code class="prettyprint">
+{
+    "id": 438180,
+    "name": "Sample Json Offer",
+    "content": {
+        "name": "Shelby",
+        "age": 23,
+        "gender": "female"
+        "workspace": "1234567" <!--Judy: Does the API return the "workspace" property for JSON offer types?-->
+    }
+}
+</code>
+
 <h2 id="admin-postman-collection">Admin Postman Collection</h2>
 
-<p>Postman is a application that makes it easy to fire API calls. This Postman collection contains all the Admin API calls in the same order as the docs. Just click on the &lsquo;Run in Postman&rsquo; button to import the Target API collection.</p>
+<p>Postman is an application that makes it easy to fire API calls. This Postman collection contains all the Target Admin API calls in the same order as the docs. Just click &lsquo;Run in Postman&rsquo; to import the Target API collection.</p>
 
 <p>This collection contains all APIs that require authentication using Adobe I/O
 * Activities
